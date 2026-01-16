@@ -54,7 +54,6 @@ spec:
             - name: DATABASE
               value: postgresql
 
-            # ===== DATABASE (UAT) =====
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://cluster-postgresql-primary.bnctl-postgres-uat-ns.svc.cluster.local:5432/dolphin_db?characterEncoding=utf8
             - name: SPRING_DATASOURCE_USERNAME
@@ -67,17 +66,14 @@ spec:
             - name: SPRING_DATASOURCE_DRIVER-CLASS-NAME
               value: org.postgresql.Driver
 
-            # ===== REGISTRY =====
             - name: REGISTRY_TYPE
               value: zookeeper
             - name: REGISTRY_ZOOKEEPER_CONNECT_STRING
               value: cluster-zookeeper:2181
 
-            # ===== JVM (GIỮ THEO DEV) =====
             - name: JAVA_OPTS
               value: -Xms1g -Xmx1g -Xmn512m
 
-            # ===== MASTER CONFIG (GIỮ THEO DEV) =====
             - name: MASTER_DISPATCH_TASK_NUM
               value: "3"
             - name: MASTER_EXEC_TASK_NUM

@@ -63,7 +63,6 @@ spec:
         - name: DATABASE
           value: postgresql
 
-        # ===== DATABASE (UAT) – CHỈ ĐỔI PHẦN NÀY =====
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://cluster-postgresql-primary.bnctl-postgres-uat-ns.svc.cluster.local:5432/dolphin_db?characterEncoding=utf8
         - name: SPRING_DATASOURCE_USERNAME
@@ -76,13 +75,11 @@ spec:
         - name: SPRING_DATASOURCE_DRIVER-CLASS-NAME
           value: org.postgresql.Driver
 
-        # ===== REGISTRY =====
         - name: REGISTRY_TYPE
           value: zookeeper
         - name: REGISTRY_ZOOKEEPER_CONNECT_STRING
           value: cluster-zookeeper:2181
 
-        # ===== WORKER CONFIG (UAT) =====
         - name: WORKER_EXEC_THREADS
           value: "100"
         - name: WORKER_HOST_WEIGHT
@@ -155,9 +152,6 @@ spec:
       - name: spark-code-sync
         persistentVolumeClaim:
           claimName: spark-code-sync-pvc
-      - name: cluster-worker-data
-        persistentVolumeClaim:
-          claimName: cluster-worker-data
       - name: cluster-worker-logs
         emptyDir: {}
       - name: config-volume

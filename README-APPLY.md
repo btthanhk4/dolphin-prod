@@ -2,16 +2,16 @@
 
 ## Các file cần apply (theo thứ tự):
 
-1. **dev-serviceaccount.yaml** - ServiceAccount cho các pods
-2. **dev-secret.yaml** - Secrets (database password, etc.)
-3. **dev-cm.yaml** - ConfigMaps (cấu hình chung)
-4. **dev-pvc.yaml** - PersistentVolumeClaims (storage cho alert và spark-code-sync)
-5. **dev-services.yaml** - Services (API, Alert, Master, Worker, Zookeeper)
-6. **dev-cluster-zookeeper.yaml** - Zookeeper StatefulSet
-7. **dev-cluster-master.yaml** - Master StatefulSet
-8. **dev-cluster-worker.yaml** - Worker StatefulSet
-9. **dev-cluster-api.yaml** - API Deployment
-10. **dev-cluster-alert.yaml** - Alert Deployment
+1. **uat-serviceaccount.yaml** - ServiceAccount cho các pods
+2. **uat-secret.yaml** - Secrets (database password, etc.)
+3. **uat-cm.yaml** - ConfigMaps (cấu hình chung)
+4. **uat-pvc.yaml** - PersistentVolumeClaims (storage cho alert và spark-code-sync)
+5. **uat-services.yaml** - Services (API, Alert, Master, Worker, Zookeeper)
+6. **uat-cluster-zookeeper.yaml** - Zookeeper StatefulSet
+7. **uat-cluster-master.yaml** - Master StatefulSet
+8. **uat-cluster-worker.yaml** - Worker StatefulSet
+9. **uat-cluster-api.yaml** - API Deployment
+10. **uat-cluster-alert.yaml** - Alert Deployment
 
 ## Cách apply:
 
@@ -31,17 +31,17 @@ kubectl create namespace bnctl-dolphinscheduler-uat-ns
 kubectl create namespace bnctl-dolphinscheduler-uat-ns
 
 # Apply theo thứ tự
-kubectl apply -f dev-serviceaccount.yaml
-kubectl apply -f dev-secret.yaml
-kubectl apply -f dev-cm.yaml
-kubectl apply -f dev-pvc.yaml
-kubectl apply -f dev-services.yaml
-kubectl apply -f dev-cluster-zookeeper.yaml
+kubectl apply -f uat-serviceaccount.yaml
+kubectl apply -f uat-secret.yaml
+kubectl apply -f uat-cm.yaml
+kubectl apply -f uat-pvc.yaml
+kubectl apply -f uat-services.yaml
+kubectl apply -f uat-cluster-zookeeper.yaml
 sleep 10  # Đợi zookeeper khởi động
-kubectl apply -f dev-cluster-master.yaml
-kubectl apply -f dev-cluster-worker.yaml
-kubectl apply -f dev-cluster-api.yaml
-kubectl apply -f dev-cluster-alert.yaml
+kubectl apply -f uat-cluster-master.yaml
+kubectl apply -f uat-cluster-worker.yaml
+kubectl apply -f uat-cluster-api.yaml
+kubectl apply -f uat-cluster-alert.yaml
 ```
 
 ## Kiểm tra sau khi apply:
@@ -62,8 +62,8 @@ kubectl logs -n bnctl-dolphinscheduler-uat-ns <pod-name>
 
 ## Lưu ý:
 
-- **PVCs**: Các PVCs sẽ được tạo tự động khi apply `dev-pvc.yaml`
+- **PVCs**: Các PVCs sẽ được tạo tự động khi apply `uat-pvc.yaml`
 - **StatefulSets**: Master và Worker sử dụng volumeClaimTemplates nên sẽ tự động tạo PVCs khi pods được tạo
-- **Services**: Tất cả services cần thiết đã được định nghĩa trong `dev-services.yaml`
+- **Services**: Tất cả services cần thiết đã được định nghĩa trong `uat-services.yaml`
 - **ServiceAccount**: Cần tạo trước khi các pods được tạo
 

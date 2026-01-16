@@ -80,22 +80,24 @@ spec:
               containerPort: 50053
 
           livenessProbe:
-            exec:
-              command: ["curl","-s","http://localhost:50053/actuator/health/liveness"]
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 5
-            successThreshold: 1
-            failureThreshold: 3
-
-          readinessProbe:
-            exec:
-              command: ["curl","-s","http://localhost:50053/actuator/health/readiness"]
+            httpGet:
+              path: /actuator/health/liveness
+              port: 50053
             initialDelaySeconds: 60
             periodSeconds: 30
             timeoutSeconds: 5
             successThreshold: 1
-            failureThreshold: 3
+            failureThreshold: 5
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 50053
+            initialDelaySeconds: 90
+            periodSeconds: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
 
           resources:
             limits:

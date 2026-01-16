@@ -112,22 +112,24 @@ spec:
           containerPort: 1235
 
         livenessProbe:
-          exec:
-            command: ["curl","-s","http://localhost:1235/actuator/health/liveness"]
-          initialDelaySeconds: 60
+          httpGet:
+            path: /actuator/health/liveness
+            port: 1235
+          initialDelaySeconds: 90
           periodSeconds: 30
           timeoutSeconds: 5
           successThreshold: 1
-          failureThreshold: 3
+          failureThreshold: 5
 
         readinessProbe:
-          exec:
-            command: ["curl","-s","http://localhost:1235/actuator/health/readiness"]
-          initialDelaySeconds: 60
+          httpGet:
+            path: /actuator/health/readiness
+            port: 1235
+          initialDelaySeconds: 120
           periodSeconds: 30
           timeoutSeconds: 5
           successThreshold: 1
-          failureThreshold: 3
+          failureThreshold: 5
 
         resources:
           limits:

@@ -50,7 +50,7 @@ spec:
               value: postgresql
 
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://cluster-postgresql-primary.bnctl-postgres-uat-ns.svc.cluster.local:5432/dolphin_db?characterEncoding=utf8
+              value: jdbc:postgresql://cluster-postgresql-primary.bnctl-postgres-prod-ns.svc.cluster.local:5432/dolphin_db?characterEncoding=utf8
             - name: SPRING_DATASOURCE_USERNAME
               value: dolphin_user
             - name: SPRING_DATASOURCE_PASSWORD

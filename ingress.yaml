@@ -12,10 +12,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - dolphinscheduler-dwh.bnctl.uat
+      - dolphinscheduler-dwh.bnctl.prod
     secretName: dolphinscheduler-dwh-tls
   rules:
-  - host: dolphinscheduler-dwh.bnctl.uat
+  - host: dolphinscheduler-dwh.bnctl.prod
     http:
       paths:
       - path: /

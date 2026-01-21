@@ -19,10 +19,10 @@ data:
   PYTHON_LAUNCHER: /usr/bin/python/bin/python3
   RESOURCE_STORAGE_TYPE: S3
   RESOURCE_STORAGE_UPLOAD_BASE_PATH: /
-  AWS-S3-ACCESS-KEY-ID: admin
-  AWS-S3-ACCESS-KEY-SECRET: S3cr3tP@ssw0rd!
+  AWS_S3_ACCESS_KEY_ID: admin
+  AWS_S3_ACCESS_KEY_SECRET: S3cr3tP@ssw0rd!
   AWS_S3_BUCKET_NAME: dolphinscheduler
-  AWS_S3_ENDPOINT: http://192.168.45.216:9001
+  AWS_S3_ENDPOINT: http://192.168.45.216:9000
   AWS_S3_PATH_STYLE_ACCESS: "true"
   SPARK_HOME: /opt/soft/spark
 ---
@@ -39,7 +39,7 @@ data:
   aws.s3.access.key.id: admin
   aws.s3.access.key.secret: S3cr3tP@ssw0rd!
   aws.s3.bucket.name: dolphinscheduler
-  aws.s3.endpoint: http://192.168.45.216:9001
+  aws.s3.endpoint: http://192.168.45.216:9000
   aws.s3.region: us-east-1
   common.properties: |
     resource.storage.type=S3

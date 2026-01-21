@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dolphinscheduler-ingress
+  namespace: bnctl-dolphinscheduler-prod-ns
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+spec:
+  tls:
+  - hosts:
+      - dolphinscheduler-dwh.bnctl.uat
+    secretName: dolphinscheduler-dwh-tls
+  rules:
+  - host: dolphinscheduler-dwh.bnctl.uat
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cluster-api
+            port:
+              number: 12345
+
